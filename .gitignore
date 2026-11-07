@@ -1,0 +1,48 @@
+# --- Delphi build output -------------------------------------------------
+Win32/
+Win64/
+*.dcu
+*.exe
+*.dll
+*.bpl
+*.dcp
+*.map
+*.drc
+*.rsm
+*.tds
+*.obj
+*.res.bak
+*.zip
+*.7z
+
+# --- IDE state -----------------------------------------------------------
+__history/
+__recovery/
+*.local
+*.identcache
+*.dsk
+*.stat
+*.tvsconfig
+*.~*
+ModelSupport_*/
+
+# --- ElevateDB data files (live data, not source) ------------------------
+*.EDBCat
+*.EDBLck
+*.EDBTbl
+*.EDBIdx
+*.EDBBlb
+*.EDBLog
+*.EDBCfg
+*.DAT
+*.IDX
+*.BLB
+*.DBK
+*.IBK
+*.BBK
+
+# --- Machine settings (may hold passwords / mail settings) ---------------
+*.ini
+
+# --- Large design files --------------------------------------------------
+*.psd

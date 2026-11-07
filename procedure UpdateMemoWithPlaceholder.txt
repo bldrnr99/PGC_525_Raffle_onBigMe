@@ -1,0 +1,21 @@
+procedure UpdateMemoWithPlaceholders(Memo: TMemo; UserName: string; Age: Integer);
+var
+  TemplateText: string;
+begin
+  // Define a template with placeholders
+  TemplateText := 'Hello, {UserName}! You are {Age} years old.';
+
+  // Replace the placeholders with actual values
+  TemplateText := StringReplace(TemplateText, '{UserName}', UserName, [rfReplaceAll]);
+  TemplateText := StringReplace(TemplateText, '{Age}', IntToStr(Age), [rfReplaceAll]);
+
+  // Add the formatted text to the TMemo
+  Memo.Lines.Add(TemplateText);
+end;
+
+
+Usage
+
+Call the procedure and pass the required values:
+
+UpdateMemoWithPlaceholders(Memo1, 'Alice', 30);

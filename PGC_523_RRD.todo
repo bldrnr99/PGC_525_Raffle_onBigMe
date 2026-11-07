@@ -1,0 +1,16 @@
+{DONE :
+
+15.08.2015 - cambiare a Chiasso line 2153 con:
+SQL.Add('SELECT TxID FROM ServicesSold WHERE SoldDT = ' +
+        '(SELECT MAX(SoldDT) FROM ServicesSold ' + ' WHERE CardID = ' + c_CardID +
+        ' AND ClientID = ' + intToStr(c_ClientID) + ' AND FeeID = ' + intToStr(3) +
+        ' AND Valid = True)');
+15.08.2015 - cambiare a Chiasso line 2168 con:
+if txnID = '' then
+      begin
+        ShowMessage('Il cliente non ha ancora giornaliere!');
+        bt_CreditCard.Tag:= 0;
+        Exit;
+      end;}
+
+

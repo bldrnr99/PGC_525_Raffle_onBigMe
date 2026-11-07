@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="5.4.3" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="42374.0958516088" ReportOptions.Description.Text="" ReportOptions.LastChange="42374.4001052315" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frxDBDataset1" DataSetName="frxDBDataset1"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="22.67718" Left="0" Top="18.89765" Width="718.1107">
+      <TfrxMemoView Name="Memo5" Left="11.33859" Top="0" Width="514.01608" Height="18.89765" Text="Pompeii Gentlemen's Club - Incassi per il mese di:[DATE]"/>
+      <TfrxLineView Name="Line1" Left="0" Top="21.01577" Width="718.1107" Height="0" Color="0" Frame.Typ="4"/>
+      <TfrxMemoView Name="Memo13" Left="616.06339" Top="0" Width="94.48825" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[Date]"/>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="22.67718" Left="0" Top="147.40167" Width="718.1107" ColumnWidth="0" ColumnGap="0" DataSet="frxDBDataset1" DataSetName="frxDBDataset1" RowCount="0">
+      <TfrxMemoView Name="Memo2" Left="11.33859" Top="0" Width="94.48825" Height="18.89765" DataSet="frxDBDataset1" DataSetName="frxDBDataset1" DisplayFormat.FormatStr="dd.mm.yy HH:MM" DisplayFormat.Kind="fkDateTime" Text="[frxDBDataset1.&#34;Data&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1Description" Left="219.21274" Top="0" Width="226.7718" Height="18.89765" DataField="Description" DataSet="frxDBDataset1" DataSetName="frxDBDataset1" Text="[frxDBDataset1.&#34;Description&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1Dare" Left="476.22078" Top="0" Width="94.48825" Height="18.89765" DataField="Dare" DataSet="frxDBDataset1" DataSetName="frxDBDataset1" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[frxDBDataset1.&#34;Dare&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1Avere" Left="612.28386" Top="0" Width="79.37013" Height="18.89765" DataField="Avere" DataSet="frxDBDataset1" DataSetName="frxDBDataset1" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[frxDBDataset1.&#34;Avere&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1CardID" Left="117.16543" Top="0" Width="79.37013" Height="18.89765" DataField="CardID" DataSet="frxDBDataset1" DataSetName="frxDBDataset1" Text="[frxDBDataset1.&#34;CardID&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="PageFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="56.69295" Left="0" Top="230.55133" Width="718.1107">
+      <TfrxMemoView Name="Memo3" Left="476.22078" Top="5" Width="94.48825" Height="18.89765" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;frxDBDataset1.&#34;Dare&#34;&#62;,MasterData1,2)]"/>
+      <TfrxMemoView Name="Memo1" Left="612.28386" Top="5" Width="94.48825" Height="18.89765" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;frxDBDataset1.&#34;Avere&#34;&#62;,MasterData1,2)]"/>
+      <TfrxMemoView Name="Memo4" Left="476.22078" Top="30.23624" Width="94.48825" Height="18.89765" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;frxDBDataset1.&#34;Dare&#34;&#62;-&#60;frxDBDataset1.&#34;Avere&#34;&#62;,MasterData1,2)]"/>
+      <TfrxMemoView Name="Memo11" Left="9.33859" Top="7.55906" Width="94.48825" Height="18.89765" Text="Totale"/>
+      <TfrxMemoView Name="Memo12" Left="7.55906" Top="34.01577" Width="98.26778" Height="18.89765" Text="Saldo"/>
+      <TfrxLineView Name="Line2" Left="3.77953" Top="1.77953" Width="706.77211" Height="0" Color="0" Frame.Typ="4"/>
+    </TfrxPageFooter>
+    <TfrxPageHeader Name="PageHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="22.67718" Left="0" Top="64.25201" Width="718.1107">
+      <TfrxMemoView Name="Memo6" Left="11.33859" Top="3.77953" Width="94.48825" Height="18.89765" Text="Data"/>
+      <TfrxMemoView Name="Memo7" Left="120.94496" Top="2.77953" Width="94.48825" Height="18.89765" Text="Tessera"/>
+      <TfrxMemoView Name="Memo8" Left="226.7718" Top="3.77953" Width="94.48825" Height="18.89765" Text="Descrizione"/>
+      <TfrxMemoView Name="Memo9" Left="480.00031" Top="3.77953" Width="94.48825" Height="18.89765" Text="Dare"/>
+      <TfrxMemoView Name="Memo10" Left="612.28386" Top="3.77953" Width="94.48825" Height="18.89765" Text="Avere"/>
+    </TfrxPageHeader>
+  </TfrxReportPage>
+</TfrxReport>

@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{50D0FB94-B27C-4901-9EB2-F25944722EBC}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PGC_510.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\Users\Me\Documents\RAD Studio\Projects\DelphiTwainPkg.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\Users\Me\Documents\RAD Studio\Projects\DelphiTwainVCLPkg.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PGC_510">
+        <MSBuild Projects="PGC_510.dproj"/>
+    </Target>
+    <Target Name="PGC_510:Clean">
+        <MSBuild Projects="PGC_510.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PGC_510:Make">
+        <MSBuild Projects="PGC_510.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DelphiTwainPkg">
+        <MSBuild Projects="C:\Users\Me\Documents\RAD Studio\Projects\DelphiTwainPkg.dproj"/>
+    </Target>
+    <Target Name="DelphiTwainPkg:Clean">
+        <MSBuild Projects="C:\Users\Me\Documents\RAD Studio\Projects\DelphiTwainPkg.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiTwainPkg:Make">
+        <MSBuild Projects="C:\Users\Me\Documents\RAD Studio\Projects\DelphiTwainPkg.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DelphiTwainVCLPkg">
+        <MSBuild Projects="C:\Users\Me\Documents\RAD Studio\Projects\DelphiTwainVCLPkg.dproj"/>
+    </Target>
+    <Target Name="DelphiTwainVCLPkg:Clean">
+        <MSBuild Projects="C:\Users\Me\Documents\RAD Studio\Projects\DelphiTwainVCLPkg.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiTwainVCLPkg:Make">
+        <MSBuild Projects="C:\Users\Me\Documents\RAD Studio\Projects\DelphiTwainVCLPkg.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PGC_510;DelphiTwainPkg;DelphiTwainVCLPkg"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PGC_510:Clean;DelphiTwainPkg:Clean;DelphiTwainVCLPkg:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PGC_510:Make;DelphiTwainPkg:Make;DelphiTwainVCLPkg:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

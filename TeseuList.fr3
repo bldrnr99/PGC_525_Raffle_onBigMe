@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.4.10" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="167935" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="43667,9705720486" ReportOptions.Description.Text="" ReportOptions.LastChange="43795,4414599306" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frxDBDatasetTeseu1" DataSetName="frxDBDatasetT1"/>
+    <item DataSet="frxDBDatasetTeseu2" DataSetName="frxDBDatasetT2"/>
+    <item DataSet="frxDBDatasetTeseu3" DataSetName="frxDBDatasetT3"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="215,9" PaperHeight="279,4" PaperSize="1" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" MirrorMode="0" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22,67718" Left="0" Top="18,89765" Width="740,409927">
+      <TfrxMemoView Name="Memo5" AllowVectorExport="True" Left="11,33859" Top="0" Width="377,953" Height="18,89765" Font.Charset="1" Font.Color="8421504" Font.Height="-15" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="ELENCO CLIENTI PER REGISTRAZIONE TESEU"/>
+      <TfrxSysMemoView Name="SysMemo1" AllowVectorExport="True" Left="577,25232" Top="0" Width="94,48825" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="[DATE]"/>
+      <TfrxSysMemoView Name="SysMemo2" AllowVectorExport="True" Left="679,29963" Top="0" Width="56,69295" Height="18,89765" Frame.Typ="0" Text="[TIME]"/>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="15" Height="30,23624" Left="0" Top="192,75603" Width="740,409927" ColumnWidth="0" ColumnGap="0" DataSet="frxDBDatasetTeseu1" DataSetName="frxDBDatasetT1" RowCount="0">
+      <TfrxMemoView Name="Memo2" AllowVectorExport="True" Left="158,74026" Top="5,77953" Width="192,75603" Height="18,89765" Frame.Typ="0" Text="[(&#60;frxDBDatasetT1.&#34;LastName&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo3" AllowVectorExport="True" Left="355,27582" Top="5,77953" Width="154,96073" Height="18,89765" Frame.Typ="0" Text="[(&#60;frxDBDatasetT1.&#34;FirstName&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo4" Align="baRight" AllowVectorExport="True" Left="645,921677" Top="5,77953" Width="94,48825" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="[(&#60;frxDBDatasetT1.&#34;SoldDT&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo13" AllowVectorExport="True" Left="517,79561" Top="5,77953" Width="109,60637" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[(&#60;frxDBDatasetT1.&#34;IDTeseu&#34;&#62;)]"/>
+      <TfrxCheckBoxView Name="CheckBox1" AllowVectorExport="True" Left="11,33859" Top="7,55906" Width="18,89765" Height="18,89765" CheckColor="0" Checked="False" CheckStyle="csCross" Frame.Typ="15"/>
+      <TfrxMemoView Name="Memo22" AllowVectorExport="True" Left="37,7953" Top="7,55906" Width="94,48825" Height="18,89765" Frame.Typ="0" Text="[(&#60;frxDBDatasetT1.&#34;Alias&#34;&#62;)]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="PageFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="132,28355" Left="0" Top="536,69326" Width="740,409927">
+      <TfrxMemoView Name="Memo1" AllowVectorExport="True" Left="665,19728" Top="0" Width="75,5906" Height="18,89765" Frame.Typ="0" HAlign="haRight" Text="[Page#]"/>
+      <TfrxMemoView Name="Memo17" AllowVectorExport="True" Left="11,33859" Top="11,33859" Width="166,29932" Height="26,45671" Frame.Typ="0" Text="Registrazioni fatte in data:"/>
+      <TfrxLineView Name="Line1" AllowVectorExport="True" Left="170,07885" Top="26,45671" Width="170,07885" Height="0" Color="0" Frame.Typ="4"/>
+      <TfrxMemoView Name="Memo18" AllowVectorExport="True" Left="11,33859" Top="76,91342" Width="30,23624" Height="18,89765" Frame.Typ="0" Text="da:"/>
+      <TfrxLineView Name="Line2" AllowVectorExport="True" Left="56,69295" Top="104,60637" Width="249,44898" Height="0" Color="0" Frame.Typ="4"/>
+      <TfrxMemoView Name="Memo19" AllowVectorExport="True" Left="374,17347" Top="76,91342" Width="68,03154" Height="18,89765" Frame.Typ="0" Text="Firma"/>
+      <TfrxLineView Name="Line3" AllowVectorExport="True" Left="449,76407" Top="105,82684" Width="260,78757" Height="0" Color="0" Frame.Typ="4"/>
+      <TfrxMemoView Name="Memo20" AllowVectorExport="True" Left="370,39394" Top="7,55906" Width="71,81107" Height="26,45671" Frame.Typ="0" Text="alle ore:"/>
+      <TfrxLineView Name="Line4" AllowVectorExport="True" Left="445,98454" Top="26,45671" Width="170,07885" Height="0" Color="0" Frame.Typ="4"/>
+    </TfrxPageFooter>
+    <TfrxMasterData Name="MasterData2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="15" Height="41,57483" Left="0" Top="294,80334" Width="740,409927" ColumnWidth="0" ColumnGap="0" DataSet="frxDBDatasetTeseu2" DataSetName="frxDBDatasetT2" RowCount="0">
+      <TfrxMemoView Name="Memo6" AllowVectorExport="True" Left="158,74026" Top="2" Width="192,75603" Height="18,89765" Frame.Typ="0" Text="[(&#60;frxDBDatasetT2.&#34;LastName&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo7" AllowVectorExport="True" Left="355,27582" Top="2" Width="154,96073" Height="18,89765" Frame.Typ="0" Text="[(&#60;frxDBDatasetT2.&#34;FirstName&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo8" Align="baRight" AllowVectorExport="True" Left="645,921677" Top="2" Width="94,48825" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="[(&#60;frxDBDatasetT2.&#34;SoldDT&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo14" AllowVectorExport="True" Left="517,79561" Top="2" Width="109,60637" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[(&#60;frxDBDatasetT2.&#34;IDTeseu&#34;&#62;)]"/>
+      <TfrxCheckBoxView Name="CheckBox2" AllowVectorExport="True" Left="11,33859" Top="3,77953" Width="18,89765" Height="18,89765" CheckColor="0" Checked="False" CheckStyle="csCross" Frame.Typ="15"/>
+      <TfrxMemoView Name="Memo23" AllowVectorExport="True" Left="37,7953" Top="3,77953" Width="94,48825" Height="18,89765" Frame.Typ="0" Text="[(&#60;frxDBDatasetT2.&#34;Alias&#34;&#62;)]"/>
+    </TfrxMasterData>
+    <TfrxColumnHeader Name="ColumnHeader1" FillType="ftBrush" Fill.BackColor="-16777192" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22,67718" Left="0" Top="64,25201" Width="740,409927">
+      <TfrxMemoView Name="Memo9" AllowVectorExport="True" Left="158,74026" Top="0" Width="94,48825" Height="18,89765" Frame.Typ="0" Text="Cognome"/>
+      <TfrxMemoView Name="Memo10" AllowVectorExport="True" Left="355,27582" Top="0" Width="94,48825" Height="18,89765" Frame.Typ="0" Text="Nome"/>
+      <TfrxMemoView Name="Memo11" AllowVectorExport="True" Left="510,23655" Top="0" Width="105,82684" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="ID TESEU"/>
+      <TfrxMemoView Name="Memo12" Align="baRight" AllowVectorExport="True" Left="615,685437" Top="0" Width="124,72449" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="Ultimo giorno lavoro"/>
+      <TfrxMemoView Name="Memo21" AllowVectorExport="True" Left="36,45671" Top="0" Width="94,48825" Height="18,89765" Frame.Typ="0" Text="Nome d'arte"/>
+    </TfrxColumnHeader>
+    <TfrxHeader Name="Header1" FillType="ftBrush" Fill.BackColor="-16777194" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22,67718" Left="0" Top="147,40167" Width="740,409927">
+      <TfrxMemoView Name="Memo15" AllowVectorExport="True" Left="18,89765" Top="2" Width="714,33117" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[what2Print]"/>
+    </TfrxHeader>
+    <TfrxHeader Name="Header2" FillType="ftBrush" Fill.BackColor="-16777194" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="26,45671" Left="0" Top="245,66945" Width="740,409927">
+      <TfrxMemoView Name="Memo16" AllowVectorExport="True" Left="7,55906" Top="3" Width="725,66976" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[what2Print2]"/>
+    </TfrxHeader>
+    <TfrxMasterData Name="MasterData3" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="52,91342" Left="0" Top="423,30736" Width="740,409927" ColumnWidth="0" ColumnGap="0" DataSet="frxDBDatasetTeseu3" DataSetName="frxDBDatasetT3" RowCount="0">
+      <TfrxCheckBoxView Name="CheckBox3" AllowVectorExport="True" Left="11,33859" Top="7,55906" Width="18,89765" Height="18,89765" CheckColor="0" Checked="False" CheckStyle="csCross" Frame.Typ="15"/>
+      <TfrxMemoView Name="Memo25" AllowVectorExport="True" Left="158,74026" Top="3,77953" Width="192,75603" Height="18,89765" Frame.Typ="0" Text="[(&#60;frxDBDatasetT3.&#34;LastName&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo26" AllowVectorExport="True" Left="355,27582" Top="3,77953" Width="154,96073" Height="18,89765" Frame.Typ="0" Text="[(&#60;frxDBDatasetT3.&#34;FirstName&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo27" Align="baRight" AllowVectorExport="True" Left="645,921677" Top="3,77953" Width="94,48825" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="[(&#60;frxDBDatasetT3.&#34;SoldDT&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo28" AllowVectorExport="True" Left="517,79561" Top="3,77953" Width="109,60637" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[(&#60;frxDBDatasetT3.&#34;IDTeseu&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo29" AllowVectorExport="True" Left="37,7953" Top="5,55906" Width="94,48825" Height="18,89765" Frame.Typ="0" Text="[(&#60;frxDBDatasetT3.&#34;Alias&#34;&#62;)]"/>
+    </TfrxMasterData>
+    <TfrxHeader Name="Header3" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="41,57483" Left="0" Top="359,05535" Width="740,409927">
+      <TfrxMemoView Name="Memo24" AllowVectorExport="True" Left="7,55906" Top="17,11812" Width="725,66976" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[what2Print3]"/>
+    </TfrxHeader>
+  </TfrxReportPage>
+</TfrxReport>

@@ -1,0 +1,133 @@
+; Customized FTDIBUS.INF
+[Version]
+Signature="$Windows NT$"
+DriverPackageType=PlugAndPlay
+DriverPackageDisplayName=%DESC%
+Class=USB
+ClassGUID={36fc9e60-c465-11cf-8056-444553540000}
+Provider=%FTDI%
+CatalogFile=USB232-485bus.cat
+DriverVer=01/18/2013,2.08.28
+
+
+[SourceDisksNames]
+1=%DriversDisk%,,,
+
+[SourceDisksFiles]
+ftdibus.sys = 1,i386
+ftbusui.dll = 1,i386
+ftd2xx.dll = 1,i386
+FTLang.Dll = 1,i386
+
+[SourceDisksFiles.amd64]
+ftdibus.sys = 1,amd64
+ftbusui.dll = 1,amd64
+ftd2xx64.dll = 1,amd64
+ftd2xx.dll = 1,i386
+FTLang.Dll = 1,amd64
+
+[DestinationDirs]
+FtdiBus.NT.Copy = 10,system32\drivers
+FtdiBus.NT.Copy2 = 10,system32
+FtdiBus.NTamd64.Copy = 10,system32\drivers
+FtdiBus.NTamd64.Copy2 = 10,system32
+FtdiBus.NTamd64.Copy3 = 10,syswow64
+
+
+[Manufacturer]
+%FTDI%=FtdiHw,NTamd64
+
+[FtdiHw]
+%USB\VID_1C40&PID_0475.DeviceDesc%=FtdiBus.NT,USB\VID_1C40&PID_0475
+%USB\VID_1C40&PID_0476.DeviceDesc%=FtdiBus.NT,USB\VID_1C40&PID_0476
+%USB\VID_1C40&PID_0477.DeviceDesc%=FtdiBus.NT,USB\VID_1C40&PID_0477
+%USB\VID_1C40&PID_0478.DeviceDesc%=FtdiBus.NT,USB\VID_1C40&PID_0478
+%USB\VID_1C40&PID_0479.DeviceDesc%=FtdiBus.NT,USB\VID_1C40&PID_0479
+%USB\VID_1C40&PID_047A.DeviceDesc%=FtdiBus.NT,USB\VID_1C40&PID_047A
+%USB\VID_1C40&PID_047B.DeviceDesc%=FtdiBus.NT,USB\VID_1C40&PID_047B
+%USB\VID_1C40&PID_047C.DeviceDesc%=FtdiBus.NT,USB\VID_1C40&PID_047C
+%USB\VID_1C40&PID_047E.DeviceDesc%=FtdiBus.NT,USB\VID_1C40&PID_047E
+
+
+[FtdiHw.NTamd64]
+%USB\VID_1C40&PID_0475.DeviceDesc%=FtdiBus.NTamd64,USB\VID_1C40&PID_0475
+%USB\VID_1C40&PID_0476.DeviceDesc%=FtdiBus.NTamd64,USB\VID_1C40&PID_0476
+%USB\VID_1C40&PID_0477.DeviceDesc%=FtdiBus.NTamd64,USB\VID_1C40&PID_0477
+%USB\VID_1C40&PID_0478.DeviceDesc%=FtdiBus.NTamd64,USB\VID_1C40&PID_0478
+%USB\VID_1C40&PID_0479.DeviceDesc%=FtdiBus.NTamd64,USB\VID_1C40&PID_0479
+%USB\VID_1C40&PID_047A.DeviceDesc%=FtdiBus.NTamd64,USB\VID_1C40&PID_047A
+%USB\VID_1C40&PID_047B.DeviceDesc%=FtdiBus.NTamd64,USB\VID_1C40&PID_047B
+%USB\VID_1C40&PID_047C.DeviceDesc%=FtdiBus.NTamd64,USB\VID_1C40&PID_047C
+%USB\VID_1C40&PID_047E.DeviceDesc%=FtdiBus.NTamd64,USB\VID_1C40&PID_047E
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[FtdiBus.NT]
+CopyFiles=FtdiBus.NT.Copy,FtdiBus.NT.Copy2
+AddReg=FtdiBus.NT.AddReg
+
+[FtdiBus.NTamd64]
+CopyFiles=FtdiBus.NTamd64.Copy,FtdiBus.NTamd64.Copy2,FtdiBus.NTamd64.Copy3
+AddReg=FtdiBus.NT.AddReg
+
+[FtdiBus.NT.Services]
+AddService = FTDIBUS, 0x00000002, FtdiBus.NT.AddService
+
+[FtdiBus.NTamd64.Services]
+AddService = FTDIBUS, 0x00000002, FtdiBus.NT.AddService
+
+[FtdiBus.NT.AddService]
+DisplayName = %SvcDesc%
+ServiceType = 1 ; SERVICE_KERNEL_DRIVER
+StartType = 3 ; SERVICE_DEMAND_START
+ErrorControl = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary = %10%\system32\drivers\ftdibus.sys
+LoadOrderGroup = Base
+AddReg = FtdiBus.NT.AddService.AddReg
+
+[FtdiBus.NT.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,ftdibus.sys
+HKR,,EnumPropPages32,,"ftbusui.dll,FTBUSUIPropPageProvider"
+
+[FtdiBus.NT.AddService.AddReg]
+;HKR,Parameters,"LocIds",1,31,00,00,00,32,00,00,00,00
+;HKR,Parameters,"RetryResetCount",0x10001,50
+
+
+[FtdiBus.NT.Copy]
+ftdibus.sys
+
+[FtdiBus.NT.Copy2]
+ftbusui.dll
+ftd2xx.dll
+FTLang.dll
+
+[FtdiBus.NTamd64.Copy]
+ftdibus.sys
+
+[FtdiBus.NTamd64.Copy2]
+ftbusui.dll
+ftd2xx.dll,ftd2xx64.dll
+FTLang.dll
+
+[FtdiBus.NTamd64.Copy3]
+ftd2xx.dll
+
+[Strings]
+Ftdi="Hjelmslund Electronics"
+DESC="CDM Driver Package - Bus/D2XX Driver"
+DriversDisk="USB232-485 Drivers Disk"
+USB\VID_1C40&PID_0475.DeviceDesc="USBSER Logic level serial converter
+USB\VID_1C40&PID_0476.DeviceDesc="USB485 Isolated converter for Modbus "
+USB\VID_1C40&PID_0477.DeviceDesc="USB485 Isolated 2 wire converter"
+USB\VID_1C40&PID_0478.DeviceDesc="USB485 Panel mount converter"
+USB\VID_1C40&PID_0479.DeviceDesc="USB485 Isolated panel mount converter"
+USB\VID_1C40&PID_047A.DeviceDesc="USB485 converter"
+USB\VID_1C40&PID_047B.DeviceDesc="USB232 Isolated panel mount converter"
+USB\VID_1C40&PID_047C.DeviceDesc="USB485 Isolated 4 wire converter"
+; Reserved for specials / Fixed baudrates
+USB\VID_1C40&PID_047E.DeviceDesc="USB232 Isolated converter"
+SvcDesc="USB232-485 Driver"
+ClassName="USB"

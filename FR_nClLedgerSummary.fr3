@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.9.15" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="42390.5164940509" ReportOptions.Description.Text="" ReportOptions.LastChange="44762.5993353009" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frxDBDataset4" DataSetName="nBarOpLedger"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" HGuides.Text="" VGuides.Text="" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" HGuides.Text="" VGuides.Text="" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" MirrorMode="0">
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22.67718" Left="0" Top="18.89765" Width="718.1107">
+      <TfrxMemoView Name="Memo21" AllowVectorExport="True" Left="3" Top="1.10235" Width="234.33086" Height="18.89765" Font.Charset="1" Font.Color="8421504" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="[whatCompany]"/>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22.67718" Left="0" Top="238.11039" Width="718.1107" ColumnWidth="0" ColumnGap="0" DataSet="frxDBDataset4" DataSetName="nBarOpLedger" RowCount="0">
+      <TfrxMemoView Name="Memo2" AllowVectorExport="True" Left="3" Top="1.77953" Width="128.50402" Height="18.89765" DataSet="frxDBDataset1" DataSetName="nOpLedger" Frame.Typ="0" Text="[(&#60;nBarOpLedger.&#34;Data&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo4" AllowVectorExport="True" Left="230.55133" Top="1.77953" Width="272.12616" Height="18.89765" DataSet="frxDBDataset1" DataSetName="nOpLedger" Frame.Typ="0" Text="Incasso giornaliero"/>
+      <TfrxMemoView Name="Memo5" AllowVectorExport="True" Left="593.89796" Top="1.77953" Width="94.48825" Height="18.89765" DataSet="frxDBDataset1" DataSetName="nOpLedger" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" HideZeros="True" ParentFont="False" Text="[(&#60;nBarOpLedger.&#34;dare&#34;&#62;)]"/>
+    </TfrxMasterData>
+    <TfrxPageFooter Name="PageFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22.67718" Left="0" Top="423.30736" Width="718.1107">
+      <TfrxSysMemoView Name="SysMemo2" AllowVectorExport="True" Left="51.91342" Top="1.77953" Width="98.26778" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[PAGE#] / [TOTALPAGES#]"/>
+      <TfrxMemoView Name="Memo1" AllowVectorExport="True" Left="3" Top="1.77953" Width="34.01577" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="Pag."/>
+    </TfrxPageFooter>
+    <TfrxPageHeader Name="PageHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="53.67718" Left="0" Top="64.25201" Width="718.1107">
+      <TfrxMemoView Name="Memo17" AllowVectorExport="True" Left="556.06339" Top="0" Width="158.74026" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="Stampato il [(&#60;Date&#62;)]"/>
+      <TfrxMemoView Name="Memo19" AllowVectorExport="True" Left="3" Top="0" Width="552.99258" Height="18.89765" Frame.Typ="0" Text="[what2print]"/>
+      <TfrxMemoView Name="Memo14" AllowVectorExport="True" Left="3" Top="28.74799" Width="710.48825" Height="18.89765" Frame.Typ="0" Text="(Esclusi importi già registrati nella cassa RICEZIONE )"/>
+    </TfrxPageHeader>
+    <TfrxColumnHeader Name="ColumnHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="37.7953" Left="0" Top="139.84261" Width="718.1107">
+      <TfrxMemoView Name="Memo7" AllowVectorExport="True" Left="3" Top="3.77953" Width="94.48825" Height="18.89765" Frame.Typ="0" Text="DATA"/>
+      <TfrxMemoView Name="Memo10" AllowVectorExport="True" Left="593.89796" Top="7.77953" Width="94.48825" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="IMPORTO"/>
+      <TfrxLineView Name="Line1" AllowVectorExport="True" Left="0" Top="30.13389" Width="721.89023" Height="0" Color="0" Frame.Typ="4"/>
+    </TfrxColumnHeader>
+    <TfrxFooter Name="Footer1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="32.67718" Left="0" Top="283.46475" Width="718.1107">
+      <TfrxMemoView Name="Memo12" AllowVectorExport="True" Left="233" Top="5" Width="94.48825" Height="18.89765" Frame.Typ="0" Text="Totale periodo"/>
+      <TfrxMemoView Name="Memo13" AllowVectorExport="True" Left="593.89796" Top="7" Width="94.48825" Height="18.89765" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;nBarOpLedger.&#34;dare&#34;&#62;,MasterData1,2)]"/>
+      <TfrxLineView Name="Line2" AllowVectorExport="True" Left="3" Top="0" Width="721.89023" Height="0" Color="0" Frame.Typ="4"/>
+    </TfrxFooter>
+    <TfrxReportSummary Name="ReportSummary1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22.67718" Left="0" Top="377.953" Width="718.1107">
+      <TfrxMemoView Name="Memo15" AllowVectorExport="True" Left="593.89796" Top="-1.61441" Width="94.48825" Height="18.89765" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="0" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;nBarOpLedger.&#34;dare&#34;&#62;,MasterData1,2)]"/>
+    </TfrxReportSummary>
+  </TfrxReportPage>
+</TfrxReport>

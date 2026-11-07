@@ -1,0 +1,5 @@
+MicroGuard changes history:
+============================
+
+10/11/2002
+ - ver 1.0 First release on Microguard LanManager.

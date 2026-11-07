@@ -1,0 +1,10 @@
+Microguard FIRMWARE history:
+=============================
+
+Ver:1.0		10/11/2002
+ - Base version for Reader and Actuator units.
+
+Ver:1.1		03/01/2003
+ - Removed bugs in firmware upgrade.
+ - New Button event.
+ - New led / beeper commands. 

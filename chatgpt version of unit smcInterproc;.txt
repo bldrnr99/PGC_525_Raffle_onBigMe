@@ -1,0 +1,507 @@
+unit smcInterproc;
+
+{
+  Simple VCL Encapsulation of the SendMessage API
+
+  VCL Classes in this Unit:
+    TMgServer      - IPC Server (TComponent)
+    TMGuardClient  - IPC Client (TComponent)
+}
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes;
+
+const
+  MgServerDisconnecting = 'MgSrvDisconnecting';
+  MgClientDisconnecting = 'MgCliDisconnecting';
+  MgConnectRequest      = 'MgConnectRequest';
+  MgConnectResponse     = 'MgConnectResponse';
+  kMgSession            = 'MGuardSession';
+  kIpcServerVer         = '1.0';
+  kIpcClientVer         = '1.3';
+
+type
+  TIPCrecord = record
+    RecType:     string[1];    // 'C'=command, 'E'=event
+    Date:        Double;
+    Time:        Double;
+    DevType:     Integer;
+    DevAddress:  string[15];
+    DevName:     string[30];
+    EventType:   Integer;
+    EventCode:   string[2];
+    EventData:   string[16];
+    EventDescr:  string[45];
+    CmdType:     Integer;
+    CmdCode:     string[2];
+  end;
+  PIPCrecord = ^TIPCrecord;
+
+  // Forward declarations for event types
+  TMgServer = class;
+  TMGuardClient = class;
+
+  // TMgServer: IPC server component
+  TMgServer = class(TComponent)
+  private
+    FWinHwnd:            HWND;
+    FClientWinHwnd:      HWND;
+    FActive:             Boolean;
+    FClientConnected:    Boolean;
+    FSessionName:        string;
+    FSessionHandle:      Longint;
+    FVersion:            string;
+
+    // IPC Data properties
+    FRecType:            string;
+    FDate:               Double;
+    FTime:               Double;
+    FDevType:            Integer;
+    FDevAddress:         string;
+    FDevName:            string;
+    FEventType:          Integer;
+    FEventCode:          string;
+    FEventData:          string;
+    FEventDescr:         string;
+    FCmdType:            Integer;
+    FCmdCode:            string;
+
+    // Registered message ids
+    FClientDisconnectHwnd: Longword;
+    FServerDisconnectHwnd: Longword;
+    FConnectRequestHwnd:   Longword;
+    FConnectResponseHwnd:  Longword;
+
+    // Events
+    FOnData:        TNotifyEvent;
+    FOnConnect:     TNotifyEvent;
+    FOnDisconnect:  TNotifyEvent;
+
+    procedure SetActive(Value: Boolean);
+    procedure SetVersion(const Value: String);
+
+    procedure CopyPropsToRecord(var Rec: TIPCrecord);
+    procedure CopyRecordToProps(const Rec: TIPCrecord);
+
+  protected
+    procedure WndProc(var AMsg: TMessage);
+
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+
+    procedure SendToMGuardClient;
+
+  published
+    property Active:             Boolean read FActive write SetActive default False;
+    property ClientConnected:    Boolean read FClientConnected default False;
+
+    property MgRecordType:       string  read FRecType write FRecType;
+    property MgRecordDate:       Double  read FDate write FDate;
+    property MgRecordTime:       Double  read FTime write FTime;
+    property MgDeviceType:       Integer read FDevType write FDevType;
+    property MgDeviceAddress:    string  read FDevAddress write FDevAddress;
+    property MgDeviceName:       string  read FDevName write FDevName;
+    property MgEventType:        Integer read FEventType write FEventType;
+    property MgEventCode:        string  read FEventCode write FEventCode;
+    property MgEventData:        string  read FEventData write FEventData;
+    property MgEventDescr:       string  read FEventDescr write FEventDescr;
+    property MgCommandType:      Integer read FCmdType write FCmdType;
+    property MgCommandCode:      string  read FCmdCode write FCmdCode;
+    property Version:            string  read FVersion write SetVersion;
+
+    property OnClientData:         TNotifyEvent read FOnData write FOnData;
+    property OnClientConnected:    TNotifyEvent read FOnConnect write FOnConnect;
+    property OnClientDisconnected: TNotifyEvent read FOnDisconnect write FOnDisconnect;
+  end;
+
+  // TMGuardClient: IPC client component
+  TMGuardClient = class(TComponent)
+  private
+    FWinHwnd:            HWND;
+    FServerWinHwnd:      HWND;
+    FActive:             Boolean;
+    FSessionName:        string;
+    FSessionHandle:      Longint;
+    FVersion:            string;
+
+    // IPC Data properties
+    FRecType:            string;
+    FDate:               Double;
+    FTime:               Double;
+    FDevType:            Integer;
+    FDevAddress:         string;
+    FDevName:            string;
+    FEventType:          Integer;
+    FEventCode:          string;
+    FEventData:          string;
+    FEventDescr:         string;
+    FCmdType:            Integer;
+    FCmdCode:            string;
+
+    // Registered message ids
+    FServerDisconnectHwnd: Longword;
+    FConnectRequestHwnd:   Longword;
+    FConnectResponseHwnd:  Longword;
+    FClientDisconnectHwnd: Longword;
+
+    // Events
+    FOnData:        TNotifyEvent;
+    FOnConnect:     TNotifyEvent;
+    FOnDisconnect:  TNotifyEvent;
+
+    procedure SetActive(Value: Boolean);
+    procedure SetVersion(const Value: String);
+
+    procedure CopyPropsToRecord(var Rec: TIPCrecord);
+    procedure CopyRecordToProps(const Rec: TIPCrecord);
+
+  protected
+    procedure WndProc(var AMsg: TMessage);
+
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+
+    procedure SendToMGuardSrv;
+
+  published
+    property Active:           Boolean read FActive write SetActive default False;
+
+    property MgRecordType:     string  read FRecType write FRecType;
+    property MgRecordDate:     Double  read FDate write FDate;
+    property MgRecordTime:     Double  read FTime write FTime;
+    property MgDeviceType:     Integer read FDevType write FDevType;
+    property MgDeviceAddress:  string  read FDevAddress write FDevAddress;
+    property MgDeviceName:     string  read FDevName write FDevName;
+    property MgEventType:      Integer read FEventType write FEventType;
+    property MgEventCode:      string  read FEventCode write FEventCode;
+    property MgEventData:      string  read FEventData write FEventData;
+    property MgEventDescr:     string  read FEventDescr write FEventDescr;
+    property MgCommandType:    Integer read FCmdType write FCmdType;
+    property MgCommandCode:    string  read FCmdCode write FCmdCode;
+    property Version:          string  read FVersion write SetVersion;
+
+    property OnDataReceive:        TNotifyEvent read FOnData write FOnData;
+    property OnConnected:          TNotifyEvent read FOnConnect write FOnConnect;
+    property OnServerDisconnected: TNotifyEvent read FOnDisconnect write FOnDisconnect;
+  end;
+
+implementation
+
+// Helper routines to copy IPC data between properties and record
+procedure CopyPropsToRecord(const Obj: TObject; var Rec: TIPCrecord);
+begin
+  with Obj do
+  begin
+    Rec.RecType     := GetPropValue(Obj, 'FRecType', '');
+    Rec.Date        := GetPropValue(Obj, 'FDate', 0.0);
+    Rec.Time        := GetPropValue(Obj, 'FTime', 0.0);
+    Rec.DevType     := GetPropValue(Obj, 'FDevType', 0);
+    Rec.DevAddress  := GetPropValue(Obj, 'FDevAddress', '');
+    Rec.DevName     := GetPropValue(Obj, 'FDevName', '');
+    Rec.EventType   := GetPropValue(Obj, 'FEventType', 0);
+    Rec.EventCode   := GetPropValue(Obj, 'FEventCode', '');
+    Rec.EventData   := GetPropValue(Obj, 'FEventData', '');
+    Rec.EventDescr  := GetPropValue(Obj, 'FEventDescr', '');
+    Rec.CmdType     := GetPropValue(Obj, 'FCmdType', 0);
+    Rec.CmdCode     := GetPropValue(Obj, 'FCmdCode', '');
+  end;
+end;
+
+procedure CopyRecordToProps(Obj: TObject; const Rec: TIPCrecord);
+begin
+  with Obj do
+  begin
+    SetPropValue(Obj, 'FRecType', Rec.RecType);
+    SetPropValue(Obj, 'FDate', Rec.Date);
+    SetPropValue(Obj, 'FTime', Rec.Time);
+    SetPropValue(Obj, 'FDevType', Rec.DevType);
+    SetPropValue(Obj, 'FDevAddress', Rec.DevAddress);
+    SetPropValue(Obj, 'FDevName', Rec.DevName);
+    SetPropValue(Obj, 'FEventType', Rec.EventType);
+    SetPropValue(Obj, 'FEventCode', Rec.EventCode);
+    SetPropValue(Obj, 'FEventData', Rec.EventData);
+    SetPropValue(Obj, 'FEventDescr', Rec.EventDescr);
+    SetPropValue(Obj, 'FCmdType', Rec.CmdType);
+    SetPropValue(Obj, 'FCmdCode', Rec.CmdCode);
+  end;
+end;
+
+{ --- TMgServer --- }
+
+constructor TMgServer.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+  FConnectRequestHwnd   := RegisterWindowMessage(MgConnectRequest);
+  FConnectResponseHwnd  := RegisterWindowMessage(MgConnectResponse);
+  FServerDisconnectHwnd := RegisterWindowMessage(MgServerDisconnecting);
+  FClientDisconnectHwnd := RegisterWindowMessage(MgClientDisconnecting);
+  FSessionName   := kMgSession;
+  FSessionHandle := RegisterWindowMessage(PChar(FSessionName));
+  FWinHwnd := 0;
+  FVersion := kIpcServerVer;
+end;
+
+destructor TMgServer.Destroy;
+begin
+  if FActive then
+    SetActive(False);
+  inherited Destroy;
+end;
+
+procedure TMgServer.SetActive(Value: Boolean);
+begin
+  if FActive = Value then
+    Exit;
+  if Value then
+  begin
+    FWinHwnd := AllocateHWND(WndProc);
+    if FWinHwnd <> 0 then
+      FActive := True
+    else
+      raise Exception.Create('IPC01 - Cannot Allocate WindowProc Handle');
+  end
+  else
+  begin
+    if FWinHwnd <> 0 then
+    begin
+      PostMessage(HWND_BROADCAST, FServerDisconnectHwnd, FWinHwnd, FSessionHandle);
+      DeallocateHWND(FWinHwnd);
+      FWinHwnd := 0;
+      FActive := False;
+    end;
+  end;
+end;
+
+procedure TMgServer.WndProc(var AMsg: TMessage);
+var
+  MsgPointer: Pointer;
+  SrvData: TIPCrecord;
+begin
+  if (AMsg.Msg = WM_COPYDATA) and (AMsg.wParam = FSessionHandle) then
+  begin
+    MsgPointer     := (TCopyDataStruct(Pointer(AMsg.lParam)^)).lpData;
+    FClientWinHwnd := (TCopyDataStruct(Pointer(AMsg.lParam)^)).dwData;
+    SrvData        := TIPCrecord(MsgPointer^);
+    CopyRecordToProps(Self, SrvData);
+    if Assigned(FOnData) then
+      FOnData(Self);
+  end
+  else if (AMsg.Msg = FConnectRequestHwnd) and (AMsg.lParam = FSessionHandle) then
+  begin
+    if FActive then
+    begin
+      FClientWinHwnd := AMsg.wParam;
+      if FClientWinHwnd <> 0 then
+      begin
+        SendMessage(FClientWinHwnd, FConnectResponseHwnd, FWinHwnd, 0);
+        FClientConnected := True;
+        if Assigned(FOnConnect) then
+          FOnConnect(Self);
+      end;
+    end;
+  end
+  else if (AMsg.Msg = FClientDisconnectHwnd) and (AMsg.lParam = FSessionHandle) then
+  begin
+    if FActive and (AMsg.wParam = Longint(FClientWinHwnd)) then
+    begin
+      FClientWinHwnd := 0;
+      FClientConnected := False;
+      if Assigned(FOnDisconnect) then
+        FOnDisconnect(Self);
+    end;
+  end;
+end;
+
+procedure TMgServer.CopyPropsToRecord(var Rec: TIPCrecord);
+begin
+  Rec.RecType     := FRecType;
+  Rec.Date        := FDate;
+  Rec.Time        := FTime;
+  Rec.DevType     := FDevType;
+  Rec.DevAddress  := FDevAddress;
+  Rec.DevName     := FDevName;
+  Rec.EventType   := FEventType;
+  Rec.EventCode   := FEventCode;
+  Rec.EventData   := FEventData;
+  Rec.EventDescr  := FEventDescr;
+  Rec.CmdType     := FCmdType;
+  Rec.CmdCode     := FCmdCode;
+end;
+
+procedure TMgServer.CopyRecordToProps(const Rec: TIPCrecord);
+begin
+  FRecType     := Rec.RecType;
+  FDate        := Rec.Date;
+  FTime        := Rec.Time;
+  FDevType     := Rec.DevType;
+  FDevAddress  := Rec.DevAddress;
+  FDevName     := Rec.DevName;
+  FEventType   := Rec.EventType;
+  FEventCode   := Rec.EventCode;
+  FEventData   := Rec.EventData;
+  FEventDescr  := Rec.EventDescr;
+  FCmdType     := Rec.CmdType;
+  FCmdCode     := Rec.CmdCode;
+end;
+
+procedure TMgServer.SendToMGuardClient;
+var
+  CopyDataStruct: TCopyDataStruct;
+  SrvData: TIPCrecord;
+begin
+  if FActive and (FClientWinHwnd <> 0) then
+  begin
+    CopyPropsToRecord(SrvData);
+    CopyDataStruct.dwData := 0;
+    CopyDataStruct.cbData := SizeOf(SrvData);
+    CopyDataStruct.lpData := @SrvData;
+    SendMessage(FClientWinHwnd, WM_COPYDATA, FSessionHandle, LPARAM(@CopyDataStruct));
+  end;
+end;
+
+procedure TMgServer.SetVersion(const Value: String);
+begin
+  // Empty: for Object Inspector visibility only
+end;
+
+{ --- TMGuardClient --- }
+
+constructor TMGuardClient.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+  FConnectRequestHwnd   := RegisterWindowMessage(MgConnectRequest);
+  FConnectResponseHwnd  := RegisterWindowMessage(MgConnectResponse);
+  FServerDisconnectHwnd := RegisterWindowMessage(MgServerDisconnecting);
+  FClientDisconnectHwnd := RegisterWindowMessage(MgClientDisconnecting);
+  FSessionName   := kMgSession;
+  FSessionHandle := RegisterWindowMessage(PChar(FSessionName));
+  FWinHwnd       := 0;
+  FServerWinHwnd := 0;
+  FVersion := kIpcClientVer;
+end;
+
+destructor TMGuardClient.Destroy;
+begin
+  if FActive then
+    SetActive(False);
+  inherited Destroy;
+end;
+
+procedure TMGuardClient.SetActive(Value: Boolean);
+begin
+  if FActive = Value then
+    Exit;
+  if Value then
+  begin
+    FWinHwnd := AllocateHWND(WndProc);
+    if FWinHwnd <> 0 then
+      SendMessage(HWND_BROADCAST, FConnectRequestHwnd, FWinHwnd, FSessionHandle);
+    // FActive will be set on ConnectResponse from server
+  end
+  else
+  begin
+    if FWinHwnd <> 0 then
+    begin
+      SendMessage(HWND_BROADCAST, FClientDisconnectHwnd, FWinHwnd, FSessionHandle);
+      DeallocateHWND(FWinHwnd);
+      FWinHwnd := 0;
+      FServerWinHwnd := 0;
+      FActive := False;
+    end;
+  end;
+end;
+
+procedure TMGuardClient.WndProc(var AMsg: TMessage);
+var
+  MsgPointer: Pointer;
+  SrvData: TIPCrecord;
+begin
+  if (AMsg.Msg = WM_COPYDATA) and (AMsg.wParam = FSessionHandle) then
+  begin
+    MsgPointer := (TCopyDataStruct(Pointer(AMsg.lParam)^)).lpData;
+    SrvData    := TIPCrecord(MsgPointer^);
+    CopyRecordToProps(SrvData);
+    if Assigned(FOnData) then
+      FOnData(Self);
+  end
+  else if AMsg.Msg = FConnectResponseHwnd then
+  begin
+    if not FActive then
+    begin
+      FServerWinHwnd := AMsg.wParam;
+      FActive := True;
+      if Assigned(FOnConnect) then
+        FOnConnect(Self);
+    end;
+  end
+  else if AMsg.Msg = FServerDisconnectHwnd then
+  begin
+    if FActive and (AMsg.wParam = Longint(FServerWinHwnd)) then
+    begin
+      FServerWinHwnd := 0;
+      FActive := False;
+      if Assigned(FOnDisconnect) then
+        FOnDisconnect(Self);
+    end;
+  end;
+end;
+
+procedure TMGuardClient.CopyPropsToRecord(var Rec: TIPCrecord);
+begin
+  Rec.RecType     := FRecType;
+  Rec.Date        := FDate;
+  Rec.Time        := FTime;
+  Rec.DevType     := FDevType;
+  Rec.DevAddress  := FDevAddress;
+  Rec.DevName     := FDevName;
+  Rec.EventType   := FEventType;
+  Rec.EventCode   := FEventCode;
+  Rec.EventData   := FEventData;
+  Rec.EventDescr  := FEventDescr;
+  Rec.CmdType     := FCmdType;
+  Rec.CmdCode     := FCmdCode;
+end;
+
+procedure TMGuardClient.CopyRecordToProps(const Rec: TIPCrecord);
+begin
+  FRecType     := Rec.RecType;
+  FDate        := Rec.Date;
+  FTime        := Rec.Time;
+  FDevType     := Rec.DevType;
+  FDevAddress  := Rec.DevAddress;
+  FDevName     := Rec.DevName;
+  FEventType   := Rec.EventType;
+  FEventCode   := Rec.EventCode;
+  FEventData   := Rec.EventData;
+  FEventDescr  := Rec.EventDescr;
+  FCmdType     := Rec.CmdType;
+  FCmdCode     := Rec.CmdCode;
+end;
+
+procedure TMGuardClient.SendToMGuardSrv;
+var
+  CopyDataStruct: TCopyDataStruct;
+  SrvData: TIPCrecord;
+begin
+  if FActive and (FServerWinHwnd <> 0) then
+  begin
+    CopyPropsToRecord(SrvData);
+    CopyDataStruct.dwData := FWinHwnd;
+    CopyDataStruct.cbData := SizeOf(SrvData);
+    CopyDataStruct.lpData := @SrvData;
+    SendMessage(FServerWinHwnd, WM_COPYDATA, FSessionHandle, LPARAM(@CopyDataStruct));
+  end;
+end;
+
+procedure TMGuardClient.SetVersion(const Value: String);
+begin
+  // Empty: for Object Inspector visibility only
+end;
+
+end.
+
+

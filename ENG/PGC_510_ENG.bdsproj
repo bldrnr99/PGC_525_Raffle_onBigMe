@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <PersonalityInfo>
+    <Option>
+      <Option Name="Personality">W32ResourceDLL.Personality</Option>
+      <Option Name="ProjectType">ResourceDLL</Option>
+      <Option Name="Version">1.0</Option>
+      <Option Name="GUID">{18586734-230B-4188-ABDC-9F23F6B15FFC}</Option>
+    </Option>
+  </PersonalityInfo>
+  <W32ResourceDLL.Personality>
+    <Source>
+      <Source Name="MainSource">PGC_510.dpr</Source>
+    </Source>
+    <Options>
+      <Options Name="BaseLang">2064</Options>
+      <Options Name="TargetName">..\PGC_510.ENG</Options>
+      <Options Name="BRCC_IncludePath"></Options>
+      <Options Name="Company"></Options>
+      <Options Name="Configuration"></Options>
+      <Options Name="Copyright"></Options>
+      <Options Name="Description"></Options>
+      <Options Name="Trademark"></Options>
+      <Options Name="Product"></Options>
+      <Options Name="ProductVersion"></Options>
+      <Options Name="Title"></Options>
+      <Options Name="FileVersion"></Options>
+      <Options Name="Evidence"></Options>
+      <Options Name="KeyFile"></Options>
+      <Options Name="KeyName"></Options>
+    </Options>
+    <FileList>
+      <File FileName="vcl\DBLOGDLG.dfm" ContainerId="W32Form" ModuleName="DBLOGDLG.dfm"/>
+      <File FileName="vcl\DBPWDLG.dfm" ContainerId="W32Form" ModuleName="DBPWDLG.dfm"/>
+      <File FileName="DM1.dfm" ContainerId="W32Form" ModuleName="DM1.dfm"/>
+      <File FileName="Main.dfm" ContainerId="W32Form" ModuleName="Main.dfm"/>
+      <File FileName="TagC32.dfm" ContainerId="W32Form" ModuleName="TagC32.dfm"/>
+      <File FileName="PGC_510_DRC.rc" ContainerId="W32RC" ModuleName="PGC_510_DRC.rc"/>
+    </FileList>
+  </W32ResourceDLL.Personality>
+</BorlandProject>
